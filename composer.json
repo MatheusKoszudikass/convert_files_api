@@ -1,0 +1,17 @@
+{
+    "name": "koszudikas/convert_files_api",
+    "description": "file converter",
+    "license": "GPL-3.0-or-later",
+    "autoload": {
+        "psr-4": {
+            "Koszudikas\\ConvertFilesApi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "MatheusKoszudikass",
+            "email": "matheusprgc@gmail.com"
+        }
+    ],
+    "require": {}
+}
