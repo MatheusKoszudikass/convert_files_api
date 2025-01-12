@@ -4,7 +4,7 @@
     "license": "GPL-3.0-or-later",
     "autoload": {
         "psr-4": {
-            "Koszudikas\\ConvertFilesApi\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [
@@ -13,5 +13,7 @@
             "email": "matheusprgc@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "league/plates": "^3.6"
+    }
 }

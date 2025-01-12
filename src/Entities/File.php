@@ -2,69 +2,89 @@
 
 namespace App\Entities;
 
-class File
+use App\Entities\Abstract\BaseEntities;
+use App\Entities\Abstract\Edit;
+use DateTime;
+
+class File extends BaseEntities  
 {
-    private $id;
     private $name;
-    private $path;
-    private $size;
-    private $createdAt;
-    private $updatedAt;
+    private $dateUpload;
 
     public function __construct($name, $path, $size)
     {
         $this->name = $name;
         $this->path = $path;
         $this->size = $size;
-        $this->createdAt = new \DateTime();
-        $this->updatedAt = new \DateTime();
+        $this->startData = new \DateTime();
+        $this->dateUpload = new \DateTime();
     }
 
-    public function getId()
+    public function getId(): string
     {
         return $this->id;
     }
 
-    public function getName()
+    public function getName(): static
     {
         return $this->name;
     }
 
-    public function setName($name)
+    public function setName($name):void
     {
         $this->name = $name;
-        $this->updatedAt = new \DateTime();
+        $this->dateUpload = new \DateTime();
     }
 
-    public function getPath()
+    public function getPath(): string
     {
         return $this->path;
     }
 
-    public function setPath($path)
+    public function setPath($path): void
     {
         $this->path = $path;
-        $this->updatedAt = new \DateTime();
+        $this->dateUpload = new \DateTime();
     }
 
-    public function getSize()
+    public function getSize(): string
     {
         return $this->size;
     }
 
-    public function setSize($size)
+    public function setSize($size): void
     {
         $this->size = $size;
-        $this->updatedAt = new \DateTime();
+        $this->dateUpload = new \DateTime();
     }
 
-    public function getCreatedAt()
+    public function getdateUpload(): DateTime
     {
-        return $this->createdAt;
+        return $this->dateUpload;
     }
 
-    public function getUpdatedAt()
+    public function validate(): void
     {
-        return $this->updatedAt;
+        if (empty($this->name)) {
+            throw new \Exception('Name is required');
+        }
+
+        if (empty($this->path)) {
+            throw new \Exception('Path is required');
+        }
+
+        if (empty($this->size)) {
+            throw new \Exception('Size is required');
+        }
+    }
+
+    public function description(object $data): string
+    {
+        return 'File: ' . $this->name . ' - ' . $this->path . ' - ' . $this->size;
+    }
+
+    public function editFile(): string
+    {
+        return 'File edited';
     }
 }
